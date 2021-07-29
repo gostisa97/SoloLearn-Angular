@@ -18,12 +18,14 @@ export class AppComponent {
   subaru: Car = { make: 'Subaru', model: 'Outback', miles: 77500 };
   honda: Car = { make: 'Honda', model: 'Accord', miles: 77600 };
   bmw: Car = { make: 'BMW', model: 'X3', miles: 77700 };
-  cars1: Car[] = [this.subaru, this.honda, this.bmw];
+  cars2: Car[] = [this.subaru, this.honda, this.bmw];
 
   // Inject service into component:
-  cars: Car[];
+  cars1: Car[];
+
   constructor(private transportationService: TransportationService) {
     this.cars = this.transportationService.getCars();
+    this.cars1 = this.transportationService.getCars1();
   }
 
   saySomething() {
@@ -34,6 +36,28 @@ export class AppComponent {
   update() {
     this.phrase += ' ..and going';
   }
+
+  username: string;
+
+  addCar1() {
+    const newCar: Car = { make: 'Tesla', model: 'X', miles: 100 };
+    //this.transportationService.addCar1(newCar);
+    this.cars1.push(newCar);
+  }
+
+  addCar() {
+    const newCar: Car = {
+      make: this.make,
+      model: this.model,
+      miles: this.miles
+    };
+    this.transportationService.addCar(newCar);
+  }
+
+  cars: Car[];
+  make: string;
+  model: string;
+  miles: number;
 
   // variables declared here will be class variables
 
