@@ -1,4 +1,23 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+
+<div>
+  {{speak()}}
+</div>
+
+<br>
+
+<div *ngFor='let color of colors'>
+  {{color}}
+</div>
+
+<br>
+
+<div *ngFor='let fruit of fruits; let i=index'>
+  Fruit {{ i }} is {{ fruit }}
+</div>
+
+<br>
+
+<div *ngFor="let car of cars">
+  {{car.make}} {{car.model}} with a mileage of {{car.miles}}
+</div>
