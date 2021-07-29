@@ -18,7 +18,7 @@
 
 <br>
 
-<div *ngFor="let car of cars">
+<div *ngFor="let car of cars1">
   {{car.make}} {{car.model}} with a mileage of {{car.miles}}
 </div>
 
@@ -27,5 +27,19 @@
 <div>
   this is where will eventually loop through our car types.
   <div *ngFor="let car of cars">
+    We have a {{car.make}} {{car.model}} with a mileage of {{car.miles}}
   </div>
 </div>
+
+<br>
+
+<div class="container">
+  <button (click)="saySomething()"> Say something </button>
+</div>
+
+<br>
+
+<div class="display">
+  {{phrase}}
+</div>
+<button (click)="update()"> click me </button>

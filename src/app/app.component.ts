@@ -1,5 +1,6 @@
 import { Component, VERSION } from '@angular/core';
 import { Car } from './car';
+import { TransportationService } from './transportation.service';
 
 @Component({
   selector: 'my-app',
@@ -7,18 +8,32 @@ import { Car } from './car';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
   // Class variables:
   name = 'Star student';
-  prefix = "I am a ";
+  prefix = 'I am a ';
 
-  colors:string[] = ['red', 'blue', 'green', 'purple'];
+  colors: string[] = ['red', 'blue', 'green', 'purple'];
   fruits: string[] = ['apple', 'orange', 'pear', 'peach'];
 
-  subaru: Car = {make: 'Subaru', model: 'Outback', miles: 58232};
-  honda: Car = {make: 'Honda', model: 'Accord', miles: 39393};
-  bmw: Car = {make: 'BMW', model: 'X3', miles: 4400};
-  cars:Car[] = [this.subaru, this.honda, this.bmw];
+  subaru: Car = { make: 'Subaru', model: 'Outback', miles: 77500 };
+  honda: Car = { make: 'Honda', model: 'Accord', miles: 77600 };
+  bmw: Car = { make: 'BMW', model: 'X3', miles: 77700 };
+  cars1: Car[] = [this.subaru, this.honda, this.bmw];
+
+  // Inject service into component:
+  cars: Car[];
+  constructor(private transportationService: TransportationService) {
+    this.cars = this.transportationService.getCars();
+  }
+
+  saySomething() {
+    alert('good day');
+  }
+
+  phrase = "It's going";
+  update() {
+    this.phrase += ' ..and going';
+  }
 
   // variables declared here will be class variables
 
@@ -30,6 +45,6 @@ export class AppComponent {
 
     // Method variables:
     const sentence = this.prefix + this.name;
-    return sentence
+    return sentence;
   }
 }
